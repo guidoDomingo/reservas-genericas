@@ -1,0 +1,859 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Reservas App - API Completa",
+		"description": "Colección completa de APIs para el sistema de reservas genéricas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "👤 USUARIOS",
+			"item": [
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juan Pérez\",\n    \"email\": \"juan@example.com\",\n    \"password\": \"12345678\",\n    \"telefono\": \"555-1234\",\n    \"direccion\": \"Calle 123, Ciudad\",\n    \"fecha_nacimiento\": \"1990-05-15\",\n    \"genero\": \"masculino\",\n    \"activo\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"store"
+							]
+						}
+					}
+				},
+				{
+					"name": "Listar Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/index?activo=1&buscar=juan",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"index"
+							],
+							"query": [
+								{
+									"key": "activo",
+									"value": "1",
+									"description": "Filtrar por estado activo"
+								},
+								{
+									"key": "genero",
+									"value": "masculino",
+									"disabled": true
+								},
+								{
+									"key": "email_verificado",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "buscar",
+									"value": "juan",
+									"description": "Buscar por nombre o email"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Mostrar Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/show/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"show",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Actualizar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juan Carlos Pérez\",\n    \"telefono\": \"555-9999\",\n    \"direccion\": \"Nueva Dirección 456\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/update/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"update",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Desactivar Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/delete/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"delete",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Reactivar Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/activate/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"activate",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Verificar Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/verificar-email/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"verificar-email",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Cambiar Contraseña",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password_actual\": \"12345678\",\n    \"password_nuevo\": \"nuevapassword123\",\n    \"password_nuevo_confirmation\": \"nuevapassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/cambiar-password/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"cambiar-password",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Historial de Reservas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/usuarios/historial-reservas/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"historial-reservas",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🏢 NEGOCIOS",
+			"item": [
+				{
+					"name": "Crear Negocio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Despensa Ivan - v2\",\n    \"descripcion\": \"Negocio de servicios múltiples\",\n    \"direccion\": \"Calle Principal 123\",\n    \"telefono\": \"555-0123\",\n    \"email\": \"contacto@despensaivan.com\",\n    \"horario_atencion\": \"Lun-Vie 8:00-18:00\",\n    \"activo\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/negocios/store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"negocios",
+								"store"
+							]
+						}
+					}
+				},
+				{
+					"name": "Listar Negocios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/negocios/index",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"negocios",
+								"index"
+							]
+						}
+					}
+				},
+				{
+					"name": "Mostrar Negocio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/negocios/show/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"negocios",
+								"show",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Actualizar Negocio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Despensa Ivan - Actualizado\",\n    \"descripcion\": \"Descripción actualizada del negocio\",\n    \"telefono\": \"555-9999\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/negocios/updated/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"negocios",
+								"updated",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Eliminar Negocio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/negocios/delete/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"negocios",
+								"delete",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Reactivar Negocio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/negocios/activar/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"negocios",
+								"activar",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "🛠️ SERVICIOS",
+			"item": [
+				{
+					"name": "Crear Servicio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"negocio_id\": 1,\n    \"nombre\": \"Corte de Cabello\",\n    \"descripcion\": \"Corte profesional de cabello\",\n    \"precio\": 50000.00,\n    \"duracion\": 45,\n    \"activo\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/servicios/store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"servicios",
+								"store"
+							]
+						}
+					}
+				},
+				{
+					"name": "Mostrar Servicio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/servicios/show/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"servicios",
+								"show",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📅 AGENDA",
+			"item": [
+				{
+					"name": "Crear Agenda",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"servicio_id\": 1,\n    \"fecha_inicio\": \"2025-11-15\",\n    \"fecha_fin\": \"2025-12-15\",\n    \"hora_inicio_trabajo\": \"09:00:00\",\n    \"hora_fin_trabajo\": \"17:00:00\",\n    \"intervalo_minutos\": 45,\n    \"dias_activos\": [1, 2, 3, 4, 5],\n    \"descanso_inicio\": \"12:00:00\",\n    \"descanso_fin\": \"13:00:00\",\n    \"activo\": true,\n    \"auto_generar_horarios\": true,\n    \"notas\": \"Agenda de prueba\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/agenda/store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agenda",
+								"store"
+							]
+						}
+					}
+				},
+				{
+					"name": "Listar Agendas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agenda/index?servicio_id=1&activo=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agenda",
+								"index"
+							],
+							"query": [
+								{
+									"key": "servicio_id",
+									"value": "1",
+									"description": "Filtrar por servicio"
+								},
+								{
+									"key": "activo",
+									"value": "1",
+									"description": "Filtrar por estado activo"
+								},
+								{
+									"key": "fecha_inicio",
+									"value": "2025-11-01",
+									"disabled": true
+								},
+								{
+									"key": "fecha_fin",
+									"value": "2025-12-31",
+									"disabled": true
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Mostrar Agenda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agenda/show/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agenda",
+								"show",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Actualizar Agenda",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hora_inicio_trabajo\": \"08:00:00\",\n    \"hora_fin_trabajo\": \"18:00:00\",\n    \"intervalo_minutos\": 30,\n    \"notas\": \"Agenda actualizada\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/agenda/update/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agenda",
+								"update",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Desactivar Agenda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agenda/delete/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agenda",
+								"delete",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Reactivar Agenda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agenda/activate/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agenda",
+								"activate",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Agendas por Servicio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agenda/servicio/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agenda",
+								"servicio",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Verificar Disponibilidad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"servicio_id\": 1,\n    \"fecha_inicio\": \"2025-11-20\",\n    \"fecha_fin\": \"2025-11-25\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/agenda/check-disponibilidad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agenda",
+								"check-disponibilidad"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "📝 RESERVAS",
+			"item": [
+				{
+					"name": "Crear Reserva",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usuario_id\": 1,\n    \"servicio_id\": 1,\n    \"agenda_id\": 1,\n    \"fecha_reserva\": \"2025-11-20\",\n    \"hora_inicio\": \"14:00:00\",\n    \"hora_fin\": \"14:45:00\",\n    \"estado\": \"pendiente\",\n    \"notas\": \"Primera reserva de prueba\",\n    \"precio_total\": 50000.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/reservas/store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reservas",
+								"store"
+							]
+						}
+					}
+				},
+				{
+					"name": "Listar Reservas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/reservas/index?estado=pendiente&fecha_desde=2025-11-01",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reservas",
+								"index"
+							],
+							"query": [
+								{
+									"key": "usuario_id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "servicio_id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "agenda_id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "estado",
+									"value": "pendiente",
+									"description": "pendiente, confirmada, cancelada, completada"
+								},
+								{
+									"key": "fecha_desde",
+									"value": "2025-11-01"
+								},
+								{
+									"key": "fecha_hasta",
+									"value": "2025-12-31",
+									"disabled": true
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Mostrar Reserva",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/reservas/show/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reservas",
+								"show",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Actualizar Reserva",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fecha_reserva\": \"2025-11-21\",\n    \"hora_inicio\": \"15:00:00\",\n    \"hora_fin\": \"15:45:00\",\n    \"notas\": \"Reserva actualizada\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/reservas/update/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reservas",
+								"update",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Cancelar Reserva",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/reservas/delete/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reservas",
+								"delete",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Confirmar Reserva",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/reservas/confirmar/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reservas",
+								"confirmar",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Completar Reserva",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/reservas/completar/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reservas",
+								"completar",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Reservas por Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/reservas/usuario/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reservas",
+								"usuario",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Verificar Disponibilidad Horario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"agenda_id\": 1,\n    \"fecha_reserva\": \"2025-11-20\",\n    \"hora_inicio\": \"15:00:00\",\n    \"hora_fin\": \"15:45:00\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/reservas/verificar-disponibilidad",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"reservas",
+								"verificar-disponibilidad"
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost"
+		}
+	]
+}

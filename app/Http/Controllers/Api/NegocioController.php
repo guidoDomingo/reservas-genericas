@@ -149,7 +149,13 @@ class NegocioController extends Controller
                 ], 404);
             }
 
-     
+            
+            if ($negocio->activo == 0) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'El negocio está desactivado'
+                ], 403);
+            }
 
             $negocioData = (array) $negocio;
 
@@ -171,11 +177,13 @@ class NegocioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): JsonResponse
+    public function update(Request $request, string $id)
     {
         try {
+
             // Verificar que el negocio existe
             $existingNegocio = DB::table('negocios')->where('id', $id)->first();
+
             
             if (!$existingNegocio) {
                 return response()->json([
@@ -205,7 +213,9 @@ class NegocioController extends Controller
             }
 
             $updateData = [];
-            
+
+          
+
             if ($request->has('nombre')) {
                 $updateData['nombre'] = $request->nombre;
             }
@@ -225,6 +235,7 @@ class NegocioController extends Controller
                 $updateData['activo'] = $request->activo;
             }
 
+
             $updateData['updated_at'] = Carbon::now();
 
             DB::table('negocios')
@@ -240,7 +251,12 @@ class NegocioController extends Controller
                 'message' => 'Negocio actualizado exitosamente'
             ], 200);
 
+
+    
+
         } catch (\Exception $e) {
+
+     
             return response()->json([
                 'success' => false,
                 'message' => 'Error al actualizar el negocio',
